@@ -265,7 +265,11 @@ import WebKit
         }
 
         PHPhotoLibrary.requestAuthorization { status in
-            if status == .authorized || status == .limited {
+            var isAuthorized = status == .authorized
+            if #available(iOS 14, *) {
+                isAuthorized = isAuthorized || status == .limited
+            }
+            if isAuthorized {
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAsset(from: image)
                 }) { success, error in
