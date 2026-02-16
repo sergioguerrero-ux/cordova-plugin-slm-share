@@ -1,0 +1,51 @@
+{
+    "name": "cordova-plugin-slm-share",
+    "version": "1.0.0",
+    "description": "Cordova plugin for native sharing, social media integration, screenshots, and gallery saving on iOS and Android",
+    "main": "www/SLMShare.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sergioguerrero-ux/cordova-plugin-slm-share.git"
+    },
+    "keywords": [
+        "cordova",
+        "plugin",
+        "share",
+        "social",
+        "whatsapp",
+        "telegram",
+        "instagram",
+        "screenshot",
+        "gallery",
+        "ecosystem:cordova",
+        "cordova-android",
+        "cordova-ios"
+    ],
+    "engines": {
+        "cordovaDependencies": {
+            ">=8.0.0": {
+                "cordova-android": ">=9.0.0",
+                "cordova-ios": ">=6.0.0"
+            }
+        }
+    },
+    "author": "Sergio Guerrero",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sergioguerrero-ux/cordova-plugin-slm-share/issues"
+    },
+    "homepage": "https://github.com/sergioguerrero-ux/cordova-plugin-slm-share#readme",
+    "cordova": {
+        "id": "cordova-plugin-slm-share",
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    },
+    "peerDependencies": {
+        "cordova": ">=8.0.0"
+    }
+}

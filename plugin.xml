@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-slm-share"
+    version="1.0.0">
+
+    <name>SLM Share</name>
+    <description>Plugin para compartir contenido via share sheet nativo, redes sociales, capturas y galeria</description>
+    <license>MIT</license>
+    <keywords>cordova,plugin,share,social,whatsapp,telegram,instagram,gallery,slm</keywords>
+    <repo>https://github.com/sergioguerrero-ux/cordova-plugin-slm-share.git</repo>
+    <issue>https://github.com/sergioguerrero-ux/cordova-plugin-slm-share/issues</issue>
+
+    <js-module src="www/SLMShare.js" name="SLMShare">
+        <clobbers target="SLMShare" />
+    </js-module>
+
+    <!-- ==================== iOS ==================== -->
+    <platform name="ios">
+        <preference name="SWIFTVERSION" default="5.0" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="SLMShare">
+                <param name="ios-package" value="SLMShare" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSPhotoLibraryAddUsageDescription">
+            <string>Esta app necesita acceso a tu galeria para guardar imagenes.</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>whatsapp</string>
+                <string>tg</string>
+                <string>instagram</string>
+                <string>instagram-stories</string>
+                <string>fb</string>
+                <string>twitter</string>
+                <string>x</string>
+                <string>sms</string>
+                <string>mailto</string>
+            </array>
+        </config-file>
+
+        <source-file src="src/ios/SLMShare.swift" />
+
+        <framework src="Photos.framework" />
+    </platform>
+
+    <!-- ==================== Android ==================== -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SLMShare">
+                <param name="android-package" value="com.slm.share.SLMShare" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+            <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${applicationId}.slm.share.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+                <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/slm_share_file_paths" />
+            </provider>
+        </config-file>
+
+        <source-file src="src/android/SLMShare.java"
+                     target-dir="src/com/slm/share" />
+
+        <resource-file src="src/android/slm_share_file_paths.xml"
+                       target="res/xml/slm_share_file_paths.xml" />
+
+        <framework src="androidx.core:core:1.12.0" />
+    </platform>
+
+</plugin>

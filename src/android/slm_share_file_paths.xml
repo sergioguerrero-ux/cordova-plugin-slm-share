@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="slm_share_cache" path="/" />
+    <external-cache-path name="slm_share_external_cache" path="/" />
+    <files-path name="slm_share_files" path="/" />
+</paths>
